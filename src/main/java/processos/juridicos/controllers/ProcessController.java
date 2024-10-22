@@ -2,23 +2,25 @@ package processos.juridicos.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import processos.juridicos.DTOS.ProcessDTO;
-import processos.juridicos.repositories.ProcessRepository;
+import processos.juridicos.services.ProcessService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/process")
+@RequestMapping("/process")
 public class ProcessController {
 
     @Autowired
-    private ProcessRepository repository;
+    private ProcessService service;
 
+    @GetMapping
     public ResponseEntity<List<ProcessDTO>> findAll(){
-
-        return null;
+        List<ProcessDTO> list = service.findAll();
+        return ResponseEntity.ok().body(list);
     }
 
 }

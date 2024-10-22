@@ -34,4 +34,16 @@ public class ProcessController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ProcessDTO> update(@PathVariable Long id, @RequestBody ProcessDTO dto){
+        ProcessDTO proc = service.update(id, dto);
+        return ResponseEntity.ok().body(proc);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

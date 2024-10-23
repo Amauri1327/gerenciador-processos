@@ -22,7 +22,4 @@ public class Process {
     private String description;
     private String area;
     private String expiration;
-
-
-
 }
